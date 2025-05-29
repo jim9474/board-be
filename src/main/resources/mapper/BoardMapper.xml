@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.board_was.mapper.BoardMapper">
+
+    <select id="findAll" resultType="com.example.board_was.model.Board">
+        SELECT * FROM board_info
+    </select>
+
+    <update id="addReadCnt" parameterType="int">
+        UPDATE board_info
+        SET board_read_cnt = board_read_cnt + 1
+        WHERE board_id = #{boardId}
+    </update>
+
+    <insert id="createBoard" parameterType="Board">
+        INSERT INTO board_info (
+        board_title,
+        board_div_cd,
+        board_text
+        ) VALUES (
+        #{board_title},
+        #{board_div_cd},
+        #{board_text}
+        )
+    </insert>
+
+    <select id="getBoardDetail" resultType="Board" parameterType="int">
+        SELECT *
+        FROM board_info
+        WHERE board_id = #{boardId}
+    </select>
+
+    <delete id="deleteBoard" parameterType="int">
+        DELETE FROM board_info
+        WHERE board_id = #{boardId}
+    </delete>
+
+</mapper>
