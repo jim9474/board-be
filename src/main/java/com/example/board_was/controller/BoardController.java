@@ -21,9 +21,33 @@ public class BoardController {
     private final BoardService boardService;
 
     @ResponseBody
-    @GetMapping("/getBoardList")
+    @GetMapping("/getAllBoardList")
     public List<Board> getBoardList() {
         return boardMapper.findAll();
+    }
+
+    @ResponseBody
+    @GetMapping("/getGameBoardList")
+    public List<Board> getGameBoardList() {
+        return boardMapper.findGameAll();
+    }
+
+    @ResponseBody
+    @GetMapping("/getStreamingBoardList")
+    public List<Board> getStreamingBoardList() {
+        return boardMapper.findStreamingAll();
+    }
+
+    @ResponseBody
+    @GetMapping("/getPoliticsBoardList")
+    public List<Board> getPoliticsBoardList() {
+        return boardMapper.findPoliticsAll();
+    }
+
+    @ResponseBody
+    @GetMapping("/getSportsBoardList")
+    public List<Board> getSportsBoardList() {
+        return boardMapper.findSportsAll();
     }
 
     @ResponseBody
