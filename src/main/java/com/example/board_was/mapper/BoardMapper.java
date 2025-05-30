@@ -13,4 +13,12 @@ public interface BoardMapper {
     Board getBoardDetail(int boardId);
 
     void deleteBoard(int boardId);
+
+    List<Board> findGameAll();
+
+    List<Board> findStreamingAll();
+
+    List<Board> findPoliticsAll();
+
+    List<Board> findSportsAll();
 }

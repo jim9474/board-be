@@ -9,6 +9,26 @@
         SELECT * FROM board_info
     </select>
 
+    <select id="findGameAll" resultType="com.example.board_was.model.Board">
+        SELECT * FROM board_info
+        WHERE board_div_cd = "game"
+    </select>
+
+    <select id="findStreamingAll" resultType="com.example.board_was.model.Board">
+        SELECT * FROM board_info
+        WHERE board_div_cd = "streaming"
+    </select>
+
+    <select id="findPoliticsAll" resultType="com.example.board_was.model.Board">
+        SELECT * FROM board_info
+        WHERE board_div_cd = "politics"
+    </select>
+
+    <select id="findSportsAll" resultType="com.example.board_was.model.Board">
+        SELECT * FROM board_info
+        WHERE board_div_cd = "sports"
+    </select>
+
     <update id="addReadCnt" parameterType="int">
         UPDATE board_info
         SET board_read_cnt = board_read_cnt + 1
