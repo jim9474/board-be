@@ -9,4 +9,16 @@
         FROM user_info
         WHERE user_id = #{userId}
     </select>
+
+    <insert id="createUser" parameterType="User">
+        INSERT INTO user_info (user_id, user_pw, user_email, user_nn, create_dtm)
+        VALUES (
+            #{user_id},
+            #{user_pw},
+            #{user_email},
+            #{user_nn},
+            DATE_FORMAT(NOW(), '%Y%m%d%H%i%S')
+        )
+    </insert>
+
 </mapper>
