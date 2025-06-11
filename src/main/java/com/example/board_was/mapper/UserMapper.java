@@ -6,4 +6,6 @@ public interface UserMapper {
     User getCheckId(String userId);
 
     void createUser(User user);
+
+    String hashedPw(User userInfo);
 }

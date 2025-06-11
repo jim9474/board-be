@@ -15,6 +15,10 @@ public class Board {
     private String board_text;
     private int board_read_cnt;
     private String board_div_cd;
+    private String crte_dtm;
+    private String crte_user;
+    private String mdfy_dtm;
+    private String mdfy_user;
 
     public void setBoardTitle(String boardTitle) {
         this.board_title = boardTitle;

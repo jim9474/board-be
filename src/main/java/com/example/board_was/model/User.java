@@ -14,7 +14,7 @@ public class User {
     private String user_pw;
     private String user_email;
     private String user_nn;
-    private String create_dtm;
+    private String crte_dtm;
     private String mdfy_dtm;
 
     public void setUserId(String userId) {
