@@ -11,7 +11,7 @@
     </select>
 
     <insert id="createUser" parameterType="User">
-        INSERT INTO user_info (user_id, user_pw, user_email, user_nn, create_dtm)
+        INSERT INTO user_info (user_id, user_pw, user_email, user_nn, crte_dtm)
         VALUES (
             #{user_id},
             #{user_pw},
@@ -20,5 +20,11 @@
             DATE_FORMAT(NOW(), '%Y%m%d%H%i%S')
         )
     </insert>
+
+    <select id="hashedPw" parameterType="User" resultType="String">
+        SELECT user_pw
+        FROM user_info
+        WHERE user_id = #{user_id}
+    </select>
 
 </mapper>
