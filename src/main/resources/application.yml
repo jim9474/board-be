@@ -14,11 +14,3 @@ mybatis:
 
 logging:
   config: classpath:logback-spring.xml
-  level:
-    root: INFO
-    jdbc.sqlonly: INFO
-    jdbc.sqltiming: OFF
-    jdbc.resultset: OFF
-    jdbc.resultsettable: OFF
-    jdbc.audit: OFF
-    jdbc.connection: OFF
