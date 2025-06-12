@@ -5,12 +5,16 @@
 
 <mapper namespace="com.example.board_was.mapper.UserMapper">
     <select id="getCheckId" parameterType="String" resultType="com.example.board_was.model.User">
+        /* hashedPw */
+
         SELECT *
         FROM user_info
         WHERE user_id = #{userId}
     </select>
 
     <insert id="createUser" parameterType="User">
+        /* createUser */
+
         INSERT INTO user_info (user_id, user_pw, user_email, user_nn, crte_dtm)
         VALUES (
             #{user_id},
@@ -22,6 +26,8 @@
     </insert>
 
     <select id="hashedPw" parameterType="User" resultType="String">
+        /* hashedPw */
+
         SELECT user_pw
         FROM user_info
         WHERE user_id = #{user_id}

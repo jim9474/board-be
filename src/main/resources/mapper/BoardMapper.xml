@@ -6,36 +6,50 @@
 <mapper namespace="com.example.board_was.mapper.BoardMapper">
 
     <select id="findAll" resultType="com.example.board_was.model.Board">
+        /* findAll */
+
         SELECT * FROM board_info
     </select>
 
     <select id="findGameAll" resultType="com.example.board_was.model.Board">
+        /* findGameAll */
+
         SELECT * FROM board_info
         WHERE board_div_cd = "game"
     </select>
 
     <select id="findStreamingAll" resultType="com.example.board_was.model.Board">
+        /* findStreamingAll */
+
         SELECT * FROM board_info
         WHERE board_div_cd = "streaming"
     </select>
 
     <select id="findPoliticsAll" resultType="com.example.board_was.model.Board">
+        /* findPoliticsAll */
+
         SELECT * FROM board_info
         WHERE board_div_cd = "politics"
     </select>
 
     <select id="findSportsAll" resultType="com.example.board_was.model.Board">
+        /* findSportsAll */
+
         SELECT * FROM board_info
         WHERE board_div_cd = "sports"
     </select>
 
     <update id="addReadCnt" parameterType="int">
+        /* addReadCnt */
+
         UPDATE board_info
         SET board_read_cnt = board_read_cnt + 1
         WHERE board_id = #{boardId}
     </update>
 
     <insert id="createBoard" parameterType="Board">
+        /* createBoard */
+
         INSERT INTO board_info (
         board_title,
         board_div_cd,
@@ -48,12 +62,16 @@
     </insert>
 
     <select id="getBoardDetail" resultType="Board" parameterType="int">
+        /* getBoardDetail */
+
         SELECT *
         FROM board_info
         WHERE board_id = #{boardId}
     </select>
 
     <delete id="deleteBoard" parameterType="int">
+        /* deleteBoard */
+
         DELETE FROM board_info
         WHERE board_id = #{boardId}
     </delete>
