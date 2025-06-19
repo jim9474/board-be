@@ -8,7 +8,10 @@ import com.example.board_was.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,14 +21,9 @@ import java.util.Map;
 @Controller
 @RequiredArgsConstructor
 public class AuthController {
-
-    @Autowired
     private final JwtUtil jwtUtil;
-    @Autowired
     private final UserService userService;
-    @Autowired
     private final UserMapper userMapper;
-    @Autowired
     private final PasswordService passwordService;
 
     @PostMapping("/login")
@@ -47,6 +45,19 @@ public class AuthController {
             ));
         } else {
             return ResponseEntity.status(401).body(Map.of("message", "아이디 또는 비밀번호가 틀렸습니다."));
+        }
+    }
+
+    @GetMapping("/auth/me")
+    @ResponseBody
+    public ResponseEntity<?> getAuth() {
+        System.out.println("getAuth Controller Start...");
+        // 현재 인증 정보 가져오기
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth.getPrincipal() != "anonymousUser") {
+            return ResponseEntity.ok(auth);
+        } else {
+            return ResponseEntity.status(401).body(null);
         }
     }
 

@@ -5,6 +5,10 @@ import com.example.board_was.model.Board;
 import com.example.board_was.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,9 +19,9 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class BoardController {
 
-    @Autowired
+
     private final BoardMapper boardMapper;
-    @Autowired
+
     private final BoardService boardService;
 
     @ResponseBody
@@ -80,5 +84,19 @@ public class BoardController {
         System.out.println("deleteBoard Controller Start..");
         int boardId = request.get("id");
         boardService.deleteBoard(boardId);
+    }
+
+    @ResponseBody
+    @PostMapping("/regComment")
+    public void regComment(@RequestBody Map<String, Object> request) {
+        System.out.println("regComment Controller Start..");
+        boardService.regComment(request);
+    }
+
+    @ResponseBody
+    @GetMapping("/getCommentList")
+    public ResponseEntity<?> getCommentList(@RequestParam int boardId) {
+        System.out.println("getCommentList Controller Start..");
+        return ResponseEntity.ok(boardMapper.getCommentList(boardId));
     }
 }

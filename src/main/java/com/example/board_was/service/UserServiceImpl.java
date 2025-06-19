@@ -11,11 +11,7 @@ import java.util.Map;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-
-    @Autowired
     private final UserMapper userMapper;
-
-    @Autowired
     private final PasswordService passwordService;
 
     @Override

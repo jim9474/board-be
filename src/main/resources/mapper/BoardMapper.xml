@@ -53,11 +53,15 @@
         INSERT INTO board_info (
         board_title,
         board_div_cd,
-        board_text
+        board_text,
+        crte_dtm,
+        crte_user
         ) VALUES (
         #{board_title},
         #{board_div_cd},
-        #{board_text}
+        #{board_text},
+        DATE_FORMAT(NOW(), '%Y%m%d%H%i%S'),
+        #{crte_user}
         )
     </insert>
 
@@ -76,4 +80,29 @@
         WHERE board_id = #{boardId}
     </delete>
 
+    <insert id="regComment" parameterType="Comment">
+        /* regComment */
+
+        INSERT INTO comment_info (
+            board_id,
+            content,
+            user_nn,
+            crte_dtm,
+            parent_id
+        ) VALUES (
+            #{board_id},
+            #{content},
+            #{user_nn},
+            DATE_FORMAT(NOW(), '%Y%m%d%H%i%S'),
+            #{parent_id}
+        )
+    </insert>
+
+    <select id="getCommentList" parameterType="int" resultType="Comment">
+        /* getCommentList */
+
+        SELECT *
+        FROM comment_info
+        WHERE board_id = #{boardId}
+    </select>
 </mapper>

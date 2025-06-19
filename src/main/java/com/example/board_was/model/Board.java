@@ -31,4 +31,6 @@ public class Board {
     public void setBoardText(String boardText) {
         this.board_text = boardText;
     }
+
+    public void setCrteUser(String crteUser) { this.crte_user =  crteUser; }
 }

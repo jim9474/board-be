@@ -1,6 +1,7 @@
 package com.example.board_was.mapper;
 
 import com.example.board_was.model.Board;
+import com.example.board_was.model.Comment;
 
 import java.util.List;
 
@@ -21,4 +22,8 @@ public interface BoardMapper {
     List<Board> findPoliticsAll();
 
     List<Board> findSportsAll();
+
+    void regComment(Comment comment);
+
+    List<Comment> getCommentList(int boardId);
 }
