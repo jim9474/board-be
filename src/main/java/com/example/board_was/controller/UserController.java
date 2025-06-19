@@ -15,9 +15,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class UserController {
 
-    @Autowired
     private final UserMapper userMapper;
-    @Autowired
+
     private final UserService userService;
 
     @GetMapping("/getCheckId")

@@ -8,4 +8,6 @@ public interface UserMapper {
     void createUser(User user);
 
     String hashedPw(User userInfo);
+
+    String getUserNn(String username);
 }

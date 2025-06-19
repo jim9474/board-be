@@ -33,4 +33,12 @@
         WHERE user_id = #{user_id}
     </select>
 
+    <select id="getUserNn" parameterType="String" resultType="String">
+        /* getUserNn */
+
+        SELECT user_nn
+        FROM user_info
+        WHERE user_id = #{username}
+    </select>
+
 </mapper>
