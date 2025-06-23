@@ -44,7 +44,10 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public void deleteBoard(int boardId) {
-        boardMapper.deleteBoard(boardId);
+        int result = boardMapper.deleteBoard(boardId);
+        if (result > 0) {
+            boardMapper.deleteBoardComment(boardId);
+        }
     }
 
     @Override
@@ -62,7 +65,48 @@ public class BoardServiceImpl implements BoardService{
             comment.setContent(request.get("content"));
             comment.setUserNn(userNn);
             comment.setParentId(request.get("parent_id"));
+            comment.setCrteUser(username);
+            comment.setCommentStCd(request.get("comment_st_cd"));
             boardMapper.regComment(comment);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void deleteComment(Map<String, Object> request) {
+        // 현재 인증 정보 가져오기
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        // 유저 아이디 (username) 가져오기
+        String userId = authentication.getName();
+        Comment comment = new Comment();
+
+        try {
+            comment.setCommentId(request.get("id"));
+            comment.setCrteUser(userId);
+            boardMapper.deleteComment(comment);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void createReplyComment(Map<String, Object> request) {
+        // 현재 인증 정보 가져오기
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        // 유저 아이디 (username) 가져오기
+        String userId = authentication.getName();
+        Comment comment = new Comment();
+
+        try {
+            comment.setContent(request.get("content"));
+            comment.setUserNn((String) request.get("userNn"));
+            comment.setCrteUser(userId);
+            comment.setParentId(request.get("parentId"));
+            comment.setBoardId(request.get("boardId"));
+            boardMapper.createReplyComment(comment);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

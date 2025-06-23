@@ -13,7 +13,7 @@ public interface BoardMapper {
 
     Board getBoardDetail(int boardId);
 
-    void deleteBoard(int boardId);
+    int deleteBoard(int boardId);
 
     List<Board> findGameAll();
 
@@ -26,4 +26,10 @@ public interface BoardMapper {
     void regComment(Comment comment);
 
     List<Comment> getCommentList(int boardId);
+
+    void deleteBoardComment(int boardId);
+
+    void deleteComment(Comment comment);
+
+    void createReplyComment(Comment comment);
 }
