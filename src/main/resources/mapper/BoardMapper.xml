@@ -88,13 +88,17 @@
             content,
             user_nn,
             crte_dtm,
-            parent_id
+            parent_id,
+            crte_user,
+            comment_st_cd
         ) VALUES (
             #{board_id},
             #{content},
             #{user_nn},
             DATE_FORMAT(NOW(), '%Y%m%d%H%i%S'),
-            #{parent_id}
+            #{parent_id},
+            #{crte_user},
+            #{comment_st_cd}
         )
     </insert>
 
@@ -105,4 +109,21 @@
         FROM comment_info
         WHERE board_id = #{boardId}
     </select>
+
+    <delete id="deleteBoardComment" parameterType="int">
+        /* deleteBoardComment */
+
+        DELETE FROM comment_info
+        WHERE board_id = #{boardId}
+    </delete>
+
+    <update id="deleteComment" parameterType="Comment">
+        /* deleteComment */
+
+        UPDATE comment_info
+        SET comment_st_cd = 1
+        WHERE comment_id = #{comment_id}
+        AND crte_user = #{crte_user}
+    </update>
+
 </mapper>

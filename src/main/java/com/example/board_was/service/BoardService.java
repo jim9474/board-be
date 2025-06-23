@@ -10,4 +10,8 @@ public interface BoardService {
     void deleteBoard(int boardId);
 
     void regComment(Map<String, Object> request);
+
+    void deleteComment(Map<String, Object> request);
+
+    void createReplyComment(Map<String, Object> request);
 }

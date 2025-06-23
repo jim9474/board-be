@@ -99,4 +99,18 @@ public class BoardController {
         System.out.println("getCommentList Controller Start..");
         return ResponseEntity.ok(boardMapper.getCommentList(boardId));
     }
+
+    @ResponseBody
+    @PostMapping("/deleteComment")
+    public void deleteComment(@RequestBody Map<String, Object> request) {
+        System.out.println("deleteComment Controller Start..");
+        boardService.deleteComment(request);
+    }
+
+//    @ResponseBody
+//    @PostMapping("/createReplyComment")
+//    public void createReplyComment(@RequestBody Map<String, Object> request) {
+//        System.out.println("createReplyComment Controller Start..");
+//        boardService.createReplyComment(request);
+//    }
 }
