@@ -34,4 +34,23 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public void editUserInfo(Map<String, Object> request) {
+        User user = new User();
+        String userPw = (String) request.get("userPw");
+        String hashedPw = null;
+        try {
+            if(userPw != null && userPw != "") {
+                hashedPw = passwordService.encodePassword(userPw);
+                user.setUserPw(hashedPw);
+            }
+            user.setUserId((String) request.get("userId"));
+            user.setUserNn((String) request.get("userNn"));
+            user.setUserEmail((String) request.get("userEmail"));
+            userMapper.editUserInfo(user);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

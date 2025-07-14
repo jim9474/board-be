@@ -105,7 +105,15 @@
     <select id="getCommentList" parameterType="int" resultType="Comment">
         /* getCommentList */
 
-        SELECT *
+        SELECT
+            comment_id,
+            board_id,
+            parent_id,
+            comment_st_cd,
+            user_nn,
+            DATE_FORMAT(crte_dtm, '%Y-%m-%d %H:%i:%s') AS formatted_dtm,
+            crte_user,
+            content
         FROM comment_info
         WHERE board_id = #{boardId}
     </select>

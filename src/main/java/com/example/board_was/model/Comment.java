@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Data
 @Getter
 @Setter
@@ -19,6 +21,7 @@ public class Comment {
     private int parent_id;
     private String crte_user;
     private int comment_st_cd;
+    private String formatted_dtm;
 
     public void setCommentId(Object commentId) {
         this.comment_id = (int) commentId;

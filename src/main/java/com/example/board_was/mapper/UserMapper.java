@@ -10,4 +10,8 @@ public interface UserMapper {
     String hashedPw(User userInfo);
 
     String getUserNn(String username);
+
+    Object getUserInfo(String userId);
+
+    void editUserInfo(User user);
 }

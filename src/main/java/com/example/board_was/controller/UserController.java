@@ -6,6 +6,7 @@ import com.example.board_was.model.User;
 import com.example.board_was.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +32,20 @@ public class UserController {
     public void createUser(@RequestBody Map<String, Object> request) {
         System.out.println("createUser Controller Start..");
         userService.createUser(request);
+    }
+
+    @GetMapping("/getUserInfo")
+    @ResponseBody
+    public ResponseEntity<?> getUserInfo(@RequestParam String userId) {
+        System.out.println("getUserInfo Controller Start..");
+        return ResponseEntity.ok(userMapper.getUserInfo(userId));
+    }
+
+    @PostMapping("/editUserInfo")
+    @ResponseBody
+    public void editUserInfo(@RequestBody Map<String, Object> request) {
+        System.out.println("editUserInfo Controller Start..");
+        userService.editUserInfo(request);
     }
 
 }
