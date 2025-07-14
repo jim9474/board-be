@@ -38,7 +38,7 @@ public class AuthController {
         boolean match = passwordService.matches(request.get("userPw"), hashedPw);
 
         String token = jwtUtil.generateToken(request.get("userId"));
-        if((hashedPw != null && hashedPw != "") && match) {
+        if((hashedPw != null && !hashedPw.isEmpty()) && match) {
             return ResponseEntity.ok(Map.of(
                     "token", token,
                     "user", Map.of("userId", request.get("userId"))

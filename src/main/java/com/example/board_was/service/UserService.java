@@ -4,4 +4,6 @@ import java.util.Map;
 
 public interface UserService {
     void createUser(Map<String, Object> request);
+
+    void editUserInfo(Map<String, Object> request);
 }
