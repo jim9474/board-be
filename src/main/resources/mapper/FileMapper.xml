@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.board_was.mapper.FileMapper">
+    <insert id="saveFile" parameterType="File">
+        INSERT INTO attach_file_info (
+            attach_file_id,
+            attach_file_nm,
+            attach_file_path,
+            attach_file_size,
+            crte_user,
+            crte_dtm,
+            attach_file_gr_id
+        ) VALUES (
+            #{attach_file_id},
+            #{attach_file_nm},
+            #{attach_file_path},
+            #{attach_file_size},
+            #{crte_user},
+            DATE_FORMAT(NOW(), '%Y%m%d%H%i%S'),
+            #{attach_file_gr_id}
+        )
+    </insert>
+</mapper>

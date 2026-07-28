@@ -19,6 +19,7 @@ public class Board {
     private String crte_user;
     private String mdfy_dtm;
     private String mdfy_user;
+    private String attach_file_gr_id;
 
     public void setBoardTitle(String boardTitle) {
         this.board_title = boardTitle;
@@ -33,4 +34,6 @@ public class Board {
     }
 
     public void setCrteUser(String crteUser) { this.crte_user =  crteUser; }
+
+    public void setAttach_file_gr_id(String fileGrId) { this.attach_file_gr_id = fileGrId; }
 }
