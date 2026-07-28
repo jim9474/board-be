@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: ENC(L7FuvBQ2WYs6ibtfC6K/d8jJG07J9yk+CffaWgtlhXz3sOTyCXxG5h00oMuUkFvFse1l+W/5SSg=)
+    username: ENC(WB2DtobnYLIYlhS1NWiX+g==)
+    password: ENC(ZO/gSnUjgA2Vw0G1ORyPMQ==)
+#    url: jdbc:log4jdbc:mysql://localhost:3306/board
+#    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+#    username: root
+#    password: root
