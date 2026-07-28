@@ -1,20 +1,23 @@
-server:
-  port: 8887
-
 spring:
-  datasource:
-    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    url: ENC(L7FuvBQ2WYs6ibtfC6K/d8jJG07J9yk+CffaWgtlhXz3sOTyCXxG5h00oMuUkFvFse1l+W/5SSg=)
-    username: ENC(WB2DtobnYLIYlhS1NWiX+g==)
-    password: ENC(ZO/gSnUjgA2Vw0G1ORyPMQ==)
-#    url: jdbc:log4jdbc:mysql://localhost:3306/board
-#    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-#    username: root
-#    password: root
+  profiles:
+    group:
+      default: common, default
+      dev: common, dev
+      prd: common, prd
+    active: default
+---
+spring:
+  config:
+    activate:
+      on-profile: common
+
   servlet:
     multipart:
       max-file-size: 20MB
       max-request-size: 20MB
+
+server:
+  port: 8887
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
@@ -25,3 +28,24 @@ logging:
 
 file:
   upload-dir: C:/data001/attachFiles
+---
+spring:
+  config:
+    activate:
+      on-profile: default
+    import:
+      - classpath:config/default/config.yml
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+    import:
+      - classpath:config/dev/config.yml
+---
+spring:
+  config:
+    activate:
+      on-profile: prd
+    import:
+      - classpath:config/prd/config.yml
