@@ -55,13 +55,15 @@
         board_div_cd,
         board_text,
         crte_dtm,
-        crte_user
+        crte_user,
+        attach_file_gr_id
         ) VALUES (
         #{board_title},
         #{board_div_cd},
         #{board_text},
         DATE_FORMAT(NOW(), '%Y%m%d%H%i%S'),
-        #{crte_user}
+        #{crte_user},
+        #{attach_file_gr_id}
         )
     </insert>
 

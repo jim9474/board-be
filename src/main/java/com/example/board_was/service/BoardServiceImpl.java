@@ -36,6 +36,7 @@ public class BoardServiceImpl implements BoardService{
             board.setBoardDivCd(request.get("boardDivCd"));
             board.setBoardText(request.get("boardText"));
             board.setCrteUser(username);
+            board.setAttach_file_gr_id(request.get("attach_file_gr_id"));
             boardMapper.createBoard(board);
         } catch (Exception e) {
             throw new RuntimeException(e);
